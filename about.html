@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Nazuan Fitry</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    :root {
+      --bg1: #0c0f19;
+      --bg2: #1a1e2c;
+      --accent: #764ba2;
+      --glow: 0 0 25px rgba(118, 75, 162, 0.45);
+      --fade-duration: 0.9s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Glow Orbs */
+    .background-decoration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      animation: floatAnimation 25s infinite ease-in-out;
+    }
+
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: -100px;
+      animation-delay: 0s;
+      background: var(--accent);
+    }
+
+    .circle-2 {
+      width: 250px;
+      height: 250px;
+      bottom: 15%;
+      right: -80px;
+      animation-delay: -8s;
+      background: var(--accent);
+    }
+
+    .circle-3 {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      right: 10%;
+      animation-delay: -15s;
+      background: var(--accent);
+    }
+
+    @keyframes floatAnimation {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-30px, 30px) scale(0.9);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 20, 0.7);
+      backdrop-filter: blur(12px);
+      z-index: 99;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 18px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: .25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: rgba(118, 75, 162, 0.4);
+      box-shadow: var(--glow);
+    }
+
+    /* Main Content */
+    .page-container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 120px 20px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+    }
+
+    .profile-image-container {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-image-wrapper {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--glow);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-image-wrapper:hover .profile-image {
+      transform: scale(1.1);
+    }
+
+    .profile-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      opacity: 0.5;
+      animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .profile-name {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+    }
+
+    .profile-title {
+      font-size: 24px;
+      margin: 0 0 24px 0;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    .profile-bio {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    .motto {
+      font-size: 18px;
+      font-style: italic;
+      opacity: 0.8;
+      margin-top: 16px;
+      padding: 12px 24px;
+      border-left: 3px solid var(--accent);
+      background: rgba(118, 75, 162, 0.1);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Info Cards */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .info-card {
+      padding: 32px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      animation: fadeInScale 0.8s ease-out forwards;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #9b59b6);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .info-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .info-card:nth-child(1) { animation-delay: 0.4s; }
+    .info-card:nth-child(2) { animation-delay: 0.6s; }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      background: rgba(118, 75, 162, 0.4);
+    }
+
+    .info-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: default;
+      opacity: 0;
+      animation: tagAppear 0.5s ease-out forwards;
+      background: rgba(118, 75, 162, 0.4);
+      box-shadow: var(--glow);
+    }
+
+    .tag:nth-child(1) { animation-delay: 0.1s; }
+    .tag:nth-child(2) { animation-delay: 0.2s; }
+    .tag:nth-child(3) { animation-delay: 0.3s; }
+    .tag:nth-child(4) { animation-delay: 0.4s; }
+    .tag:nth-child(5) { animation-delay: 0.5s; }
+    .tag:nth-child(6) { animation-delay: 0.6s; }
+
+    .tag:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Family Section */
+    .family-section {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+      opacity: 0;
+      animation: fadeInScale 0.8s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    .family-photo-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--glow);
+      transition: all 0.4s ease;
+      background: rgba(255, 255, 255, 0.05);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .family-photo-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .family-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .family-photo-container:hover .family-photo {
+      transform: scale(1.05);
+    }
+
+    .family-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      padding: 20px;
+      color: white;
+    }
+
+    .family-photo-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .family-photo-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .family-members-card {
+      padding: 32px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .family-members-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    .family-members-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+      color: var(--accent);
+    }
+
+    .family-member {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: rgba(118, 75, 162, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--accent);
+    }
+
+    .family-member:hover {
+      background: rgba(118, 75, 162, 0.3);
+      transform: translateX(5px);
+    }
+
+    .member-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(118, 75, 162, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      font-size: 18px;
+    }
+
+    .member-name {
+      font-size: 16px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .member-relation {
+      font-size: 14px;
+      opacity: 0.8;
+      background: rgba(118, 75, 162, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Personal Details */
+    .personal-details {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .detail-card {
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .detail-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .detail-content {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes tagAppear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: var(--glow);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(118, 75, 162, 0.7);
+      }
+    }
+
+    /* Fade Overlay */
+    .fade-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--fade-duration);
+      z-index: 200;
+    }
+    .fade-overlay.show { opacity: 1; pointer-events: auto; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .profile-name {
+        font-size: 36px;
+      }
+
+      .profile-title {
+        font-size: 20px;
+      }
+
+      .profile-bio {
+        font-size: 16px;
+      }
+
+      .profile-image-wrapper {
+        width: 200px;
+        height: 200px;
+      }
+
+      .sections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .family-section {
+        grid-template-columns: 1fr;
+      }
+
+      .family-photo-container {
+        min-height: 300px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 20px;
+      }
+      
+      nav a {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+<body>
+  <div class="background-decoration">
+    <div class="floating-circle circle-1"></div>
+    <div class="floating-circle circle-2"></div>
+    <div class="floating-circle circle-3"></div>
+  </div>
+
+  <div id="fadeOverlay" class="fade-overlay"></div>
+
+  <nav>
+    <div class="brand">Personal Website</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Me</a>
+      <a href="experiences.html" class="nav-link">experience</a>
+      <a href="music.html">Music</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="artwork.html">Artwork</a>
+      <a href="connect.html">Connect</a>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <div class="content-wrapper">
+      <header class="profile-header">
+        <div class="profile-image-container">
+          <div class="profile-image-wrapper">
+            <img class="profile-image" id="profileImage" src="nazuan511.jpg" alt="Muhammad Nazuan Fitry">
+          </div>
+          <div class="profile-ring" id="profileRing"></div>
+        </div>
+        <div class="profile-info">
+          <h1 class="profile-name" id="profileName">Muhammad Nazuan Fitry</h1>
+          <h2 class="profile-title" id="profileTitle">Student</h2>
+          <p class="profile-bio" id="profileBio">
+            I am a 20-year-old student from Teluk Intan, Perak.I have 6 siblings including myself, and I am the fourth child. Currently studying at UiTM Kedah while actively serving as a Komander Kesatria. Passionate about discipline, leadership growth and creative expression. My goal is to keep improving and become a better version of myself every day.
+          </p>
+          <p class="motto" id="profileMotto">"I am not motivated, I am disciplined."</p>
+        </div>
+      </header>
+
+      <div class="sections-grid">
+        <article class="info-card" id="skillsCard">
+          <div class="card-icon" id="skillsIcon">
+            ⚡
+          </div>
+          <h3 class="card-title" id="skillsTitle">Skills</h3>
+          <div class="tags-container" id="skillsContainer">
+            <span class="tag">Leadership</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Discipline</span>
+            <span class="tag">Communication</span>
+          </div>
+        </article>
+        <article class="info-card" id="interestsCard">
+          <div class="card-icon" id="interestsIcon">
+            💡
+          </div>
+          <h3 class="card-title" id="interestsTitle">Interests</h3>
+          <div class="tags-container" id="interestsContainer">
+            <span class="tag">Music</span>
+            <span class="tag">Fitness</span>
+            <span class="tag">Drawing</span>
+            <span class="tag">Leadership</span>
+          </div>
+        </article>
+        
+        <!-- Family Section -->
+        <div class="family-section">
+          <div class="family-photo-container">
+            <img class="family-photo" id="familyPhoto" src="nazuan family.jpg" alt="My Family">
+            <div class="family-photo-overlay">
+              <div class="family-photo-title">My Beloved Family</div>
+              <div class="family-photo-subtitle">The people who mean the world to me</div>
+            </div>
+          </div>
+          
+          <div class="family-members-card">
+            <h3 class="family-members-title">Family Members</h3>
+            <div class="family-member">
+              <div class="member-icon">👨</div>
+              <div class="member-name">Mohd Azuan Bin Mat Alwee</div>
+              <div class="member-relation">Father</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👩</div>
+              <div class="member-name">Nor Azlina Binti Yuan</div>
+              <div class="member-relation">Mother</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👦</div>
+              <div class="member-name">Muhammad Nazuan Azry Bin Mohd Azuan</div>
+              <div class="member-relation">Older Brother</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👦</div>
+              <div class="member-name">Muhammad Nazuan Azroy Bin Mohd Azuan</div>
+              <div class="member-relation">Second Older Brother</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👧</div>
+              <div class="member-name">Nor Azualina Puteri Binti Mohd Azuan</div>
+              <div class="member-relation">Older Sister</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👦</div>
+              <div class="member-name">Mohd Nazuan Fitry Bin Mohd Azuan</div>
+              <div class="member-relation">Me</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👦</div>
+              <div class="member-name">Mohd Nazuan Aidilfitri Bin Mohd Azuan</div>
+              <div class="member-relation">Youngest sibling</div>
+            </div>
+            <div class="family-member">
+              <div class="member-icon">👶</div>
+              <div class="member-name">Mohd Nazuan Fiqqry Bin Mohd Azuan</div>
+              <div class="member-relation">Youngest sibling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="personal-details">
+        <div class="detail-card">
+          <h4 class="detail-title">Age</h4>
+          <p class="detail-content">20</p>
+        </div>
+        <div class="detail-card">
+          <h4 class="detail-title">Location</h4>
+          <p class="detail-content">Teluk Intan, Perak</p>
+        </div>
+        <div class="detail-card">
+          <h4 class="detail-title">Education</h4>
+          <p class="detail-content">UiTM Kedah</p>
+        </div>
+        <div class="detail-card">
+          <h4 class="detail-title">Role</h4>
+          <p class="detail-content">Student</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const defaultConfig = {
+      background_color: '#0c0f19',
+      secondary_color: '#1a1e2c',
+      primary_color: '#764ba2',
+      text_color: '#ffffff',
+      card_background: 'rgba(255, 255, 255, 0.05)',
+      font_family: 'Poppins',
+      font_size: 16,
+      profile_name: 'Muhammad Nazuan Fitry Bin Mohd Azuan',
+      profile_title: 'Student',
+      bio_text: 'I am a 20 year old student from Teluk Intan, Perak.I have 6 siblings including myself, and I am the fourth child Currently studying at UiTM Kedah while actively serving as a Komander Kesatria. Passionate about discipline, leadership growth and creative expression. My goal is to keep improving and become a better version of myself every day.',
+      profile_motto: '"I am not motivated, I am disciplined."',
+      profile_image_url: 'nazuan511.jpg',
+      family_photo_url: 'nazuan family.jpg',
+      family_members: 'Father: Mohd Azuan Bin Mansor,Mother: Siti Zaleha Binti Bahrin,Brother: Muhammad Nazim Fitry,Sister: Nurul Ain Fitry,Youngest Brother: Ahmad Daniel Fitry',
+      skills_list: 'Leadership, Teamwork, Discipline, Communication',
+      interests_list: 'Music, Fitness, Drawing, Photography'
+    };
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontSize = config.font_size || defaultConfig.font_size;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const cardBackground = config.card_background || defaultConfig.card_background;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${secondaryColor} 100%)`;
+      document.body.style.color = textColor;
+      document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
+
+      const circles = document.querySelectorAll('.floating-circle');
+      circles[0].style.background = primaryColor;
+      circles[1].style.background = primaryColor;
+      circles[2].style.background = primaryColor;
+
+      const profileNameEl = document.getElementById('profileName');
+      profileNameEl.textContent = config.profile_name || defaultConfig.profile_name;
+      profileNameEl.style.color = textColor;
+      profileNameEl.style.fontSize = `${baseFontSize * 3}px`;
+      profileNameEl.style.fontFamily = `${customFont}, sans-serif`;
+
+      const profileTitleEl = document.getElementById('profileTitle');
+      profileTitleEl.textContent = config.profile_title || defaultConfig.profile_title;
+      profileTitleEl.style.color = textColor;
+      profileTitleEl.style.fontSize = `${baseFontSize * 1.5}px`;
+      profileTitleEl.style.fontFamily = `${customFont}, sans-serif`;
+
+      const profileBioEl = document.getElementById('profileBio');
+      profileBioEl.textContent = config.bio_text || defaultConfig.bio_text;
+      profileBioEl.style.color = textColor;
+      profileBioEl.style.fontSize = `${baseFontSize * 1.125}px`;
+      profileBioEl.style.fontFamily = `${customFont}, sans-serif`;
+
+      const profileMottoEl = document.getElementById('profileMotto');
+      profileMottoEl.textContent = config.profile_motto || defaultConfig.profile_motto;
+      profileMottoEl.style.color = textColor;
+      profileMottoEl.style.fontSize = `${baseFontSize * 1.125}px`;
+      profileMottoEl.style.fontFamily = `${customFont}, sans-serif`;
+
+      // Profile Image
+      const profileImageUrl = config.profile_image_url || defaultConfig.profile_image_url;
+      const profileImageEl = document.getElementById('profileImage');
+      
+      if (profileImageUrl && profileImageUrl.trim() !== '') {
+        profileImageEl.src = profileImageUrl;
+        profileImageEl.alt = config.profile_name || 'Profile picture';
+        profileImageEl.onerror = function() {
+          console.error('Failed to load profile image:', profileImageUrl);
+        };
+      }
+
+      // Family Photo
+      const familyPhotoUrl = config.family_photo_url || defaultConfig.family_photo_url;
+      const familyPhotoEl = document.getElementById('familyPhoto');
+      
+      if (familyPhotoUrl && familyPhotoUrl.trim() !== '') {
+        familyPhotoEl.src = familyPhotoUrl;
+        familyPhotoEl.alt = 'Family Photo';
+        familyPhotoEl.onerror = function() {
+          console.error('Failed to load family photo:', familyPhotoUrl);
+        };
+      }
+
+      const profileRing = document.getElementById('profileRing');
+      profileRing.style.borderColor = primaryColor;
+
+      const infoCards = document.querySelectorAll('.info-card');
+      infoCards.forEach(card => {
+        card.style.backgroundColor = cardBackground;
+        card.style.color = textColor;
+      });
+
+      const familyMembersCard = document.querySelector('.family-members-card');
+      familyMembersCard.style.backgroundColor = cardBackground;
+      familyMembersCard.style.color = textColor;
+
+      const familyPhotoContainer = document.querySelector('.family-photo-container');
+      familyPhotoContainer.style.backgroundColor = cardBackground;
+
+      const detailCards = document.querySelectorAll('.detail-card');
+      detailCards.forEach(card => {
+        card.style.backgroundColor = cardBackground;
+        card.style.color = textColor;
+      });
+
+      const cardBeforeStyle = document.createElement('style');
+      cardBeforeStyle.innerHTML = `.info-card::before { background: linear-gradient(90deg, ${primaryColor}, ${adjustBrightness(primaryColor, 20)}); }`;
+      document.head.appendChild(cardBeforeStyle);
+
+      const cardTitles = document.querySelectorAll('.card-title');
+      cardTitles.forEach(title => {
+        title.style.color = textColor;
+        title.style.fontSize = `${baseFontSize * 1.5}px`;
+        title.style.fontFamily = `${customFont}, sans-serif`;
+      });
+
+      const detailTitles = document.querySelectorAll('.detail-title');
+      detailTitles.forEach(title => {
+        title.style.color = primaryColor;
+        title.style.fontSize = `${baseFontSize * 1.125}px`;
+        title.style.fontFamily = `${customFont}, sans-serif`;
+      });
+
+      const skillsIcon = document.getElementById('skillsIcon');
+      skillsIcon.style.background = `linear-gradient(135deg, ${primaryColor}, ${adjustBrightness(primaryColor, 20)})`;
+
+      const interestsIcon = document.getElementById('interestsIcon');
+      interestsIcon.style.background = `linear-gradient(135deg, ${adjustBrightness(primaryColor, 20)}, ${primaryColor})`;
+
+      updateTags('skillsContainer', config.skills_list || defaultConfig.skills_list, primaryColor, baseFontSize, customFont);
+      updateTags('interestsContainer', config.interests_list || defaultConfig.interests_list, primaryColor, baseFontSize, customFont);
+    }
+
+    function updateTags(containerId, listString, color, baseFontSize, font) {
+      const container = document.getElementById(containerId);
+      const items = listString.split(',').map(item => item.trim()).filter(item => item);
+      
+      container.innerHTML = '';
+      items.forEach((item, index) => {
+        const tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = item;
+        tag.style.background = `${color}40`;
+        tag.style.color = '#ffffff';
+        tag.style.fontSize = `${baseFontSize * 0.9375}px`;
+        tag.style.fontFamily = `${font}, sans-serif`;
+        tag.style.animationDelay = `${index * 0.1}s`;
+        container.appendChild(tag);
+      });
+    }
+
+    function adjustBrightness(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const r = Math.min(255, Math.max(0, (num >> 16) + percent));
+      const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + percent));
+      const b = Math.min(255, Math.max(0, (num & 0x0000FF) + percent));
+      return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['profile_name', config.profile_name || defaultConfig.profile_name],
+        ['profile_title', config.profile_title || defaultConfig.profile_title],
+        ['bio_text', config.bio_text || defaultConfig.bio_text],
+        ['profile_motto', config.profile_motto || defaultConfig.profile_motto],
+        ['profile_image_url', config.profile_image_url || defaultConfig.profile_image_url],
+        ['family_photo_url', config.family_photo_url || defaultConfig.family_photo_url],
+        ['family_members', config.family_members || defaultConfig.family_members],
+        ['skills_list', config.skills_list || defaultConfig.skills_list],
+        ['interests_list', config.interests_list || defaultConfig.interests_list]
+      ]);
+    }
+
+    // Navigation fade effect
+    const overlay = document.getElementById("fadeOverlay");
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', e => {
+        const url = a.getAttribute("href");
+        if (!url.endsWith(".html")) return;
+        if (location.pathname.endsWith(url)) return;
+        e.preventDefault();
+        overlay.classList.add("show");
+        setTimeout(() => window.location.href = url, 900);
+      });
+    });
+    window.addEventListener("pageshow", () => overlay.classList.remove("show"));
+
+    // Initialize SDK if available
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Initialize the page with default config
+    document.addEventListener('DOMContentLoaded', function() {
+      onConfigChange(defaultConfig);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience & Education</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100%;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1a0b2e 0%, #3b0f5e 100%);
+      color: #f1f5f9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .brand {
+      font-size: 24px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    nav .links a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #f1f5f9;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav .links a:hover,
+    nav .links a.active {
+      color: #a78bfa;
+    }
+
+    .page-container {
+      width: 100%;
+      min-height: 100%;
+      padding: 120px 20px 80px;
+      position: relative;
+    }
+
+    .background-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .glow-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+    }
+
+    .glow-1 {
+      width: 500px;
+      height: 500px;
+      top: -100px;
+      right: -100px;
+      background: #a78bfa;
+    }
+
+    .glow-2 {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      left: -100px;
+      background: #c084fc;
+    }
+
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .experience-card {
+      padding: 36px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      background-color: #2d1b4e;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+    }
+
+    .card-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      opacity: 0.9;
+    }
+
+    .card-date {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      background-color: rgba(167, 139, 250, 0.15);
+      color: #a78bfa;
+    }
+
+    .card-description {
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    .section-divider {
+      height: 1px;
+      margin: 80px auto;
+      max-width: 600px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .section-title { font-size: 36px; }
+      .section-icon { font-size: 40px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .experience-card { padding: 28px; }
+      .card-title { font-size: 20px; }
+      .card-subtitle { font-size: 16px; }
+      .card-description { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="brand">Personal Website</div>
+    <div class="links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Me</a>
+      <a href="experience.html" class="nav-link active">Experience</a>
+      <a href="music.html" class="nav-link">Music</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="connect.html" class="nav-link">Connect</a>
+    </div>
+  </nav>
+
+  <!-- Glowing Background -->
+  <div class="background-glow">
+    <div class="glow-circle glow-1"></div>
+    <div class="glow-circle glow-2"></div>
+  </div>
+
+  <main class="page-container">
+    <div class="content-wrapper">
+      <!-- Work Experience -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-icon">💼</div>
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+        <div class="cards-grid" id="workExperienceContainer">
+          <!-- JS renders work cards here -->
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Education -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-icon">🎓</div>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="cards-grid" id="educationContainer">
+          <!-- JS renders education cards here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const workData = [
+      {
+        title: "Cashier",
+        workplace: "UiTM Kiosk",
+        date: "2024-Present",
+        description: "Try to improve my self"
+      },
+      {
+        title: "Food Packaging Assistant",
+        WorkPlace: "Ita Biskut",
+        date: "during Ramadan",
+        description: "Try to collect money for something"
+      },
+      {
+        title: "Food Server",
+        company: "My neighboor shop",
+        date: "2022 when i already finish my high school ",
+        description: "Try to connect with people and try to improve my communication skill"
+      }
+    ];
+
+    const educationData = [
+      {
+        degree: "Form 1 - Form 5",
+        school: "Sekolah Menengah Kebangsaan Kampung Bahagia",
+        date: "2017-2022",
+        
+      },
+      {
+        degree: "Bachelor of Information Management",
+        school: "Universiti Teknologi Mara",
+        date: "2023-2026",
+      }
+    ];
+
+    function renderCards(containerId, data, badgeIcon, color) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'experience-card';
+
+        const badge = document.createElement('div');
+        badge.className = 'card-icon-badge';
+        badge.style.background = color;
+        badge.textContent = badgeIcon;
+
+        const title = document.createElement('h3');
+        title.className = 'card-title';
+        title.textContent = item.title || item.degree;
+
+        const subtitle = document.createElement('p');
+        subtitle.className = 'card-subtitle';
+        subtitle.textContent = item.company || item.school;
+
+        const date = document.createElement('div');
+        date.className = 'card-date';
+        date.textContent = item.date;
+
+        const description = document.createElement('p');
+        description.className = 'card-description';
+        description.textContent = item.description;
+
+        card.appendChild(badge);
+        card.appendChild(title);
+        card.appendChild(subtitle);
+        card.appendChild(date);
+        card.appendChild(description);
+
+        container.appendChild(card);
+      });
+    }
+
+    renderCards('workExperienceContainer', workData, '💼', 'linear-gradient(135deg, #a78bfa, #c084fc)');
+    renderCards('educationContainer', educationData, '🎓', 'linear-gradient(135deg, #c084fc, #a78bfa)');
+  </script>
+</body>
+</html>

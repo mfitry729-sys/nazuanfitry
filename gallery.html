@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery & Art — Nazuan Fitry</title>
+
+  <style>
+    :root{
+      --bg1:#2a3256;
+      --bg2:#241731;
+      --surface:rgba(26,26,46,0.90);
+      --accent:#9da8ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter, sans-serif;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#fff;
+    }
+
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:30;
+      padding:18px 24px;
+      display:flex;justify-content:space-between;align-items:center;
+      background:var(--surface);backdrop-filter:blur(10px);
+    }
+    nav a{color:#fff;text-decoration:none;margin-left:18px;padding:8px 12px;border-radius:8px;transition:.2s}
+    nav a.active, nav a:hover{background:rgba(255,255,255,0.15);transform:translateY(-2px)}
+
+    main{padding:140px 24px 80px}
+
+    h2{
+      font-size:40px;
+      margin-bottom:28px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    /* Gallery Scroller */
+    .gallery-scroller{
+      display:flex;
+      overflow-x:auto;
+      gap:28px;
+      padding:40px 10px;
+      scroll-behavior:smooth;
+    }
+
+    .card{
+      flex:0 0 260px;
+      height:350px;
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(6px);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 15px 40px rgba(0,0,0,0.35);
+      transition:.35s;
+      cursor:pointer;
+      position:relative;
+      border:2px solid transparent;
+    }
+
+    .card img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.35s;
+    }
+
+    .card.active{
+      transform:scale(1.15);
+      border-color:var(--accent);
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .details-panel{
+      margin-top:40px;
+      background:rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:28px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+      max-width:700px;
+      margin-left:auto;margin-right:auto;
+      text-align:center;
+    }
+
+    .details-panel h3{
+      margin-bottom:10px;font-size:26px;
+    }
+
+    .details-panel p{
+      opacity:.9;line-height:1.7;
+    }
+
+    /* SECOND BOX: MY FAVOURITE VIDEO */
+    #videoFavPanel{
+      margin-top:25px;
+      background:rgba(195, 70, 217, 0.08);
+      border-radius:20px;
+      padding:28px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 10px 40px rgba(73, 15, 78, 0.3);
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+      text-align:center;
+    }
+    #videoFavPanel h3{
+      font-size:26px;
+      margin-bottom:10px;
+    }
+    #videoFavPanel p{
+      opacity:.9;
+      line-height:1.7;
+    }
+
+    /* ---- VIDEO SECTION BELOW DESCRIPTION ---- */
+    .video-section{
+      margin:40px auto 0;
+      max-width:900px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:20px;
+    }
+
+    .video-section video{
+      width:100%;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    /* Lightbox Fullscreen */
+    .lightbox{
+      display:none;
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:9999;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:85%;
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(255,255,255,0.3);
+    }
+
+    #closeBtn{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:45px;
+      cursor:pointer;
+      color:white;
+    }
+
+    #downloadBtn{
+      margin-top:20px;
+      background:white;
+      color:black;
+      padding:12px 22px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">Personal Website</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="experiences.html" class="nav-link">experience</a>
+    <a href="music.html">Music</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="artwork.html">Artwork</a>
+    <a href="connect.html">Connect</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <h2>Gallery</h2>
+
+  <div class="gallery-scroller" id="galleryScroller">
+
+    <div class="card active" data-title="scenery" data-desc="Evening view in the UiTM area.">
+      <img src="nazuan2.jpg" />
+    </div>
+
+    <div class="card" data-title="Teluk Intan" data-desc="Teluk Intan Leaning Tower at night.">
+      <img src="nazuan211.jpg" />
+    </div>
+
+    <div class="card" data-title="Random Picture" data-desc="This is the funny picture that I want to share.">
+      <img src="nazuan311.jpg" />
+    </div>
+
+    <div class="card" data-title="Aesthetic" data-desc="This picture I took after jogging.">
+      <img src="nazuan411.jpg" />
+    </div>
+
+    <div class="card" data-title="TikTok Filter" data-desc="Photo taken using a TikTok filter.">
+      <img src="nazuan f1.jpg" />
+    </div>
+
+    <div class="card" data-title="My Interests" data-desc="I like army and special forces themed pictures.">
+      <img src="nazuan f6.jpg" />
+    </div>
+
+    <div class="card" data-title="Family" data-desc="Taken before my eldest brother's engagement ceremony.">
+      <img src="nazuan f3.jpg" />
+    </div>
+
+    <div class="card" data-title="cutie pie" data-desc="She wore the cutest outfit that day.">
+      <img src="nazuan f4.jpg" />
+    </div>
+
+    <div class="card" data-title="cutie pie" data-desc="Captured while we were playing.">
+      <img src="nazuan f5.jpg" />
+    </div>
+
+    <div class="card" data-title="Strava" data-desc="10km jogging moment.">
+      <img src="nazuan f7.jpg" />
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION BOX -->
+  <div class="details-panel" id="detailsPanel">
+    <h3>scenery</h3>
+    <p>Evening view in the UiTM area.</p>
+  </div>
+
+  <!-- SECOND DESCRIPTION BOX: MY FAVOURITE VIDEO -->
+  <div class="details-panel" id="videoFavPanel">
+    <h3>MY FAVOURITE VIDEO</h3>
+    <p>Here are some of my favourite videos that I want to share.</p>
+  </div>
+
+  <!-- NEW VIDEO SECTION BELOW DESCRIPTION -->
+  <div class="video-section">
+    <video controls src="kamenrider v.mp4"></video>
+    <video controls src="video3.mp4"></video>
+    <video controls src="video2.mp4"></video>
+    <video controls src="video4.mp4"></video>
+    <video controls src="video5.mp4"></video>
+    <video controls src="video6.mp4"></video>
+  </div>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span id="closeBtn">&times;</span>
+  <img id="lightboxImg">
+  <a id="downloadBtn" download>Download</a>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const detailsPanel = document.getElementById('detailsPanel');
+
+  cards.forEach(card=>{
+    card.addEventListener('click',()=>{
+      cards.forEach(c=>c.classList.remove('active'));
+      card.classList.add('active');
+      detailsPanel.querySelector('h3').innerText = card.dataset.title;
+      detailsPanel.querySelector('p').innerText = card.dataset.desc;
+      card.scrollIntoView({behavior:"smooth", inline:"center"});
+    });
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  cards.forEach(card=>{
+    card.addEventListener("dblclick", ()=>{
+      const imgSrc = card.querySelector("img").src;
+      lightboxImg.src = imgSrc;
+      downloadBtn.href = imgSrc;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  closeBtn.onclick = ()=> lightbox.style.display = "none";
+  lightbox.onclick = (e)=>{ 
+    if(e.target === lightbox) lightbox.style.display = "none"; 
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MUHAMMAD NAZUAN FITRY BIN MOHD AZUAN — Home</title>
+  <style>
+    :root{
+      --bg1:#667eea; --bg2:#764ba2; --surface: rgba(26,26,46,0.95);
+      --glass: rgba(255,255,255,0.08);
+      --accent1:#7b61ff; --accent2:#5aa3ff;
+      --fade-duration: 0.9s;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;overflow-x:hidden}
+    /* navbar */
+    nav{position:fixed;top:0;left:0;right:0;background:var(--surface);backdrop-filter:blur(10px);padding:18px 24px;z-index:40;display:flex;justify-content:space-between;align-items:center}
+    nav .brand{font-weight:700;font-size:18px}
+    nav .links a{color:#fff;text-decoration:none;margin-left:18px;padding:8px 12px;border-radius:8px;transition:all .2s}
+    nav .links a.active, nav .links a:hover{background:rgba(102,126,234,0.45);transform:translateY(-2px)}
+    main{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;text-align:center;flex-direction:column}
+    .profile {
+      width:260px;height:260px;border-radius:50%;object-fit:cover;border:5px solid rgba(255,255,255,0.4);box-shadow:0 20px 50px rgba(0,0,0,0.35);margin-bottom:22px;
+    }
+    h1{font-size:42px;margin:0 0 8px;background:linear-gradient(135deg,#fff,#adb9ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    p.lead{margin:0 0 18px;font-size:18px;color:rgba(255,255,255,0.95)}
+    .btn{display:inline-block;padding:12px 28px;border-radius:999px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.14);color:#fff;text-decoration:none;font-weight:600}
+    /* fade overlay */
+    .fade-overlay{position:fixed;inset:0;background:#0a0a15;pointer-events:none;opacity:0;transition:opacity var(--fade-duration) cubic-bezier(.2,.9,.2,1);z-index:60}
+    .fade-overlay.show{opacity:1;pointer-events:auto}
+    /* responsive */
+    @media (max-width:640px){
+      .profile{width:200px;height:200px}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <div class="fade-overlay" id="fadeOverlay"></div>
+
+  <nav>
+  <div class="brand">Personal Website</div>
+  <div class="links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About Me</a>
+    <a href="experiences.html" class="nav-link">experience</a>
+    <a href="music.html" class="nav-link">Music</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="artwork.html">Artwork</a>
+    <a href="connect.html" class="nav-link active">connect</a>
+  </div>
+</nav>
+
+  <main id="content">
+    <img src="nazuanfitry1.jpg" alt="Nazuan Fitry" class="profile">
+    <h1>MUHAMMAD NAZUAN FITRY BIN MOHD AZUAN</h1>
+    <p class="lead">Welcome to my profile</p>
+    <a class="btn" href="about.html">Explore My Website</a>
+  </main>
+
+<script>
+  // Fade transition handler for links
+  const fadeDuration = 900; // ms (match CSS 0.9s)
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href');
+      // if same page, do default
+      if(location.pathname.endsWith(href) || href === window.location.pathname.split('/').pop()) return;
+      e.preventDefault();
+      document.getElementById('fadeOverlay').classList.add('show');
+      setTimeout(()=>{ location.href = href; }, fadeDuration);
+    });
+  });
+
+  // on load, ensure fade overlay hides (for back nav)
+  window.addEventListener('pageshow', ()=>{ document.getElementById('fadeOverlay').classList.remove('show'); });
+
+</script>
+</body>
+</html>

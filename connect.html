@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Connect — Nazuan Fitry</title>
+
+  <style>
+    :root {
+      --bg1:#0d0f19;
+      --bg2:#12131a;
+
+      --tiktok1:#25f4ee; --tiktok2:#ff0050;
+      --ig1:#f09433; --ig2:#dc2743; --ig3:#cc2366; --ig4:#bc1888;
+      --wa1:#25d366; --wa2:#128c7e;
+      --gm1:#ffb037; --gm2:#ff8c00; --gm3:#37b34a;
+      --fb1:#1877F2; --fb2:#0b5dce;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body {
+      background:linear-gradient(160deg,var(--bg1),var(--bg2));
+      font-family:Inter,system-ui,sans-serif;
+      color:#fff;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* -----------------------------------------------------
+       FLOATING GLOW SHAPES (CIRCLES + SQUARES)
+    ----------------------------------------------------- */
+    .float-shape {
+      position:absolute;
+      opacity:0.12;
+      filter:blur(4px);
+      animation: float 9s infinite ease-in-out, rotate 18s infinite linear;
+    }
+
+    .circle {
+      width:180px;height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+    }
+
+    .square {
+      width:150px;height:150px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.12);
+    }
+
+    /* random placements */
+    .s1{top:12%;left:8%;animation-duration:15s;}
+    .s2{top:55%;left:12%;animation-duration:13s;}
+    .s3{top:22%;right:10%;animation-duration:16s;}
+    .s4{bottom:18%;right:16%;animation-duration:14s;}
+    .s5{bottom:30%;left:35%;animation-duration:20s;}
+
+    @keyframes float {
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-40px)}
+      100%{transform:translateY(0)}
+    }
+
+    @keyframes rotate {
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+
+    /* -----------------------------------------------------
+       GLOWING CORNERS
+    ----------------------------------------------------- */
+    .glow {
+      position:absolute;
+      width:420px;height:420px;
+      background:radial-gradient(circle, rgba(140,80,255,0.35), transparent 70%);
+      filter:blur(60px);
+      opacity:0.5;
+      animation:pulse 6s infinite ease-in-out alternate;
+      pointer-events:none;
+    }
+    .glow.top-left{top:-150px;left:-150px;}
+    .glow.bottom-right{bottom:-150px;right:-150px;}
+
+    @keyframes pulse {
+      0%{opacity:0.25}
+      100%{opacity:0.65}
+    }
+
+    /* -----------------------------------------------------
+       NAVBAR
+    ----------------------------------------------------- */
+    nav {
+      position:fixed;top:0;left:0;right:0;
+      padding:16px 34px;
+      background:rgba(10,10,20,0.55);
+      backdrop-filter:blur(12px);
+      z-index:90;
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    nav a {
+      color:white;text-decoration:none;
+      margin-left:18px;padding:8px 14px;
+      border-radius:10px;transition:.25s;
+    }
+    nav a:hover,
+    nav a.active {
+      background:rgba(255,255,255,0.12);
+    }
+    .brand{font-weight:700;font-size:20px}
+
+    /* -----------------------------------------------------
+       MAIN CONTENT
+    ----------------------------------------------------- */
+    main {
+      padding:140px 20px 80px;
+      text-align:center;
+      display:flex;flex-direction:column;
+      align-items:center;
+      gap:24px;
+      position:relative;
+      z-index:10;
+    }
+
+    h2 {
+      font-size:45px;font-weight:800;
+    }
+    .subtitle {
+      font-size:17px;
+      max-width:520px;
+      opacity:0.85;
+      line-height:1.6;
+    }
+
+    .social-grid {
+      margin-top:35px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+      gap:30px;
+      width:100%;
+      max-width:850px;
+    }
+
+    .card {
+      border-radius:22px;
+      padding:35px 20px;
+      color:white;
+      text-decoration:none;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      font-size:18px;
+      font-weight:600;
+      box-shadow:0 8px 28px rgba(0,0,0,0.35);
+      transition:.25s;
+    }
+    .card:hover {
+      transform:translateY(-8px);
+      filter:brightness(1.15);
+    }
+
+    .icon {width:44px;margin-bottom:12px;}
+
+    /* gradients */
+    .tiktok {background:linear-gradient(145deg,var(--tiktok1),var(--tiktok2));}
+    .instagram {background:linear-gradient(145deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4));}
+    .whatsapp {background:linear-gradient(145deg,var(--wa1),var(--wa2));}
+    .gmail {background:linear-gradient(145deg,var(--gm1),var(--gm2),var(--gm3));}
+    .facebook {background:linear-gradient(145deg,var(--fb1),var(--fb2));}
+
+    @media(max-width:480px){
+      h2{font-size:32px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BACKGROUND EFFECTS -->
+<div class="glow top-left"></div>
+<div class="glow bottom-right"></div>
+
+<div class="float-shape circle s1"></div>
+<div class="float-shape square s2"></div>
+<div class="float-shape circle s3"></div>
+<div class="float-shape square s4"></div>
+<div class="float-shape circle s5"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="brand">Personal Website</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="experiences.html" class="nav-link">experience</a>
+    <a href="music.html">Music</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="artwork.html">Artwork</a>
+    <a class="active" href="connect.html">Connect</a>
+  </div>
+</nav>
+
+<!-- MAIN SECTION -->
+<main>
+  <h2>Connect With Me</h2>
+  <p class="subtitle">Let’s stay connected — reach out on any platform below 👇</p>
+
+  <div class="social-grid">
+
+    <!-- TikTok -->
+    <a class="card tiktok" href="https://tiktok.com/@zanx_ia" target="_blank">
+      <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tiktok.svg">
+      TikTok
+    </a>
+
+    <!-- Instagram -->
+    <a class="card instagram" href="https://www.instagram.com/zanziax?igsh=MXJwN2JkZ3ZmcXZ4eQ==" target="_blank">
+      <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
+      Instagram
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="card whatsapp" href="https://wa.me/60162862791" target="_blank">
+      <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg">
+      WhatsApp
+    </a>
+
+    <!-- Gmail -->
+    <a class="card gmail" href="mailto:mfitry729@gmail.com" target="_blank">
+      <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg">
+      Gmail
+    </a>
+
+    <!-- Facebook -->
+    <a class="card facebook" href="https://facebook.com/NazuanFitry" target="_blank">
+      <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg">
+      Facebook
+    </a>
+
+  </div>
+</main>
+
+</body>
+</html>
